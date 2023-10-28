@@ -1,5 +1,7 @@
 import {React, useState} from "react";
-import {View, Text, ScrollView, TouchableOpacity, StyleSheet} from "react-native"
+import {View, Text, ScrollView, TouchableOpacity, StyleSheet} from "react-native";
+import { AntDesign } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons'; 
 
 const Browse = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -149,19 +151,19 @@ const Browse = () => {
             
 
             <View style={styles.navBar}>
-                <TouchableOpacity style={styles.navBtn}>
-                    <Text style={{textAlign: "center", marginLeft: 15, color: "white"}}>Home</Text>
+                <TouchableOpacity style={[styles.navBtn, selectedNav === "Home" ? styles.selected_navBtn : styles.navBtn]} onPress={() => selectedNavButton("Home")}>
+                <AntDesign name="home" size={40} color="black" />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.navBtn}>
-                    <Text style={{textAlign: "center", color: "white"}}>Search</Text>
+                <TouchableOpacity style={[styles.navBtn, selectedNav === "Search" ? styles.selected_navBtn : styles.navBtn]} onPress={() => selectedNavButton("Search")}>
+                <Feather name="search" size={40 } color="black" />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.navBtn}>
+                <TouchableOpacity style={[styles.navBtn, selectedNav === "Cart" ? styles.selected_navBtn : styles.navBtn]} onPress={() => selectedNavButton("Cart")}>
                     <Text style={{textAlign: "center", color: "white"}}>Cart</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.navBtn}>
+                <TouchableOpacity style={[styles.navBtn, selectedNav === "Order" ? styles.selected_navBtn : styles.navBtn]} onPress={() => selectedNavButton("Order")}>
                     <Text style={{textAlign: "center", color: "white"}}>Order History</Text>
                 </TouchableOpacity>
             </View>
@@ -232,7 +234,14 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(0,0,0,0.2)",
         paddingRight: 10,
         paddingLeft: 10,
-
+    },
+    selected_navBtn: {
+        marginRight: 30,
+        height: 50,
+        paddingTop: 10,
+        backgroundColor: "rgba(0,0,0,0.5)",
+        paddingRight: 10,
+        paddingLeft: 10,
     },
     categoryText: {
         color:"white"
